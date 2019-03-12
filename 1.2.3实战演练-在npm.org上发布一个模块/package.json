@@ -1,0 +1,9 @@
+{
+  "name": "vue-cropping",
+  "version": "0.0.1",
+  "description": "这是一个基于vue的图片裁切插件",
+  "main": "index.js",
+  "scripts": {},
+  "author": "Mark",
+  "license": "ISC"
+}
