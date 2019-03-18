@@ -23,6 +23,16 @@ Router.get("/user", async (ctx, next) => {
   .del("/user/:id", async (ctx, next) => {
     ctx.body = `删除对应id的用户`;
     await next();
+  })
+  .all("/user/:id", async (ctx, next) => {
+    console.log(`match "user/:id" method`);
+
+    await next();
+  })
+  .all("/user", async (ctx, next) => {
+    console.log(`match "user" method`);
+
+    await next();
   });
 
 app.use(Router.routes());
