@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="zh">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>index</title>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <style>
+      button {
+        display: block;
+        margin: 30px;
+        cursor: pointer;
+      }
+    </style>
+  </head>
+  <body>
+    <button id="get">点我发送 get 请求</button>
+    <button id="post">点我发送 post 请求</button>
+    <button id="put">点我发送 put 请求</button>
+    <button id="del">点我发送 del 请求</button>
+  </body>
+</html>
+<script>
+  document.getElementById("get").onclick = () => {
+    axios({
+      method: "get",
+      url: "/user",
+      params: {
+        name: "getxxx"
+      }
+    }).then(res => {
+      console.log(res);
+    });
+  };
+  document.getElementById("post").onclick = () => {
+    axios({
+      method: "post",
+      url: "/user",
+      data: {
+        id: "postxxx"
+      }
+    }).then(res => {
+      console.log(res);
+    });
+  };
+  document.getElementById("put").onclick = () => {
+    axios({
+      method: "put",
+      url: "/user/:id",
+      data: {
+        id: "putxxx"
+      }
+    }).then(res => {
+      console.log(res);
+    });
+  };
+  document.getElementById("del").onclick = () => {
+    axios({
+      method: "delete",
+      url: "/user/:id",
+      data: {
+        id: "deletexxx"
+      }
+    }).then(res => {
+      console.log(res);
+    });
+  };
+</script>

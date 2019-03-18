@@ -1,13 +1,29 @@
 const koa = require("koa");
 const app = new koa();
-const router = require("./router");
-const Router = new router();
+const koa_router = require("koa-router");
+const Router = new koa_router();
+const static = require("koa-static");
+const path = require("path");
 
-Router.get("/404", async (ctx, next) => {
-  ctx.body = "Page not found , 页面找不到了";
-  ctx.status = 404;
+const staticPath = "./www";
+app.use(static(path.join(__dirname, staticPath)));
+
+Router.get("/user", async (ctx, next) => {
+  ctx.body = `Hello World`;
   await next();
-});
+})
+  .post("/user", async (ctx, next) => {
+    ctx.body = `新增用户`;
+    await next();
+  })
+  .put("/user/:id", async (ctx, next) => {
+    ctx.body = `修改对应id的用户`;
+    await next();
+  })
+  .del("/user/:id", async (ctx, next) => {
+    ctx.body = `删除对应id的用户`;
+    await next();
+  });
 
 app.use(Router.routes());
 
